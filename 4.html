@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <h2>v-for数组</h2>
+        <div>
+            <div>
+                <h3>数组遍历</h3>
+                <ul>
+                    <li v-for="name in names">
+                        {{name}}
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div>
+                <h3>对象数组遍历(key-value)</h3>
+                <div v-for="user,index in users">
+                    {{index+1}}.
+                    <span v-for="value,key in user">
+                        {{key}} : {{value}} 
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+    el: '#app',
+    data: {
+        names:["dyf","dyf1","dyf2"],
+        users:[
+            {"name":"dyf","message":"here!","time":"11.11"},
+            {"name":"dyf1","message":"here!","time":"11.11"},
+            {"name":"dyf2","message":"here!","time":"11.11"}
+        ]
+    },
+    methods: {},
+
+    computed: {}
+})
+</script>
+</body>
+</html>
+    
+</body>
+</html

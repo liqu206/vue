@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can{
+            border: 1px solid;
+           
+        }
+    </style>
+</head>
+<body>
+    <canvas id="can" width="500" height="500"></canvas>
+    <script>
+        var can=document.getElementById('can')
+        var pen=can.getContext('2d');
+        var x=y=0;
+        pen.fillRect(x,y,60,60);
+
+        document.onkeydown=function(even){    
+            if(even.keyCode>=37&&even.keyCode<=40){   
+                pen.clearRect(x,y,60,60);       
+                switch(even.keyCode){             
+                    case 37:x=x-10;break;       
+                    case 38:y=y-10;break;       
+                    case 39:x=x+10;break;       
+                    case 40:y=y+10;break;       
+                }
+               if(x<0){         
+                   x=0;
+               }else if(x>400){
+               x=400;
+               }
+               if(y<0){
+                   y=0;
+               }else if(y>400){
+                   y=400;
+               }
+               pen.fillRect(x,y,60,60);
+            }
+        }
+    </script>
+</body>
+</html>

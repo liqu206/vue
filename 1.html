@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>
+            输入电话号码验证：
+            <input v-model="phone" type="number" required> 
+        </p>
+        <p>{{ answer }}</p>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                phone: '',
+                answer: '请输入电话号码！'
+            },
+            watch: {
+                phone: function (newQuestion, oldQuestion){
+                    this.answer = '等待输入完成...';
+                    this.deboumcedGetAnswer();
+                }
+            },
+            created: function (){
+                this.deboumcedGetAnswer = _.debounce(this.getAnswer,500);
+            },
+            methods: {
+                getAnswer: function(){
+                    const pattern =/\d{11}/;
+                    if(!pattern.exec(this.phone)){
+                        this.answer = '输入手机号码不正确！';
+                        return;
+                    }
+                    this.answer = '验证中...';
+                    axios.get('https://yesno.wtf/api')
+                        .then((response)=>{
+                           if(_.capitalize(response.data.answer)=='NO'){
+                           this.answer = '验证不正确';
+                        }
+                        else{
+                            this.answer = '验证正确';
+                        }      
+                })
+                .catch((errer)=>{
+                    this.answer = '网络错误：'+error
+                });
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
