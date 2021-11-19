@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+</head>
+
+<body>
+    <form>
+        <table width="500" align="center">
+            <tr>
+                <td>性别</td>
+                <td><input type="radio" name="sex" id="nan"><label for="nan">男</label>
+                    <input type="radio" name="sex" id="nv"><label for="nv">女</label>
+                </td>
+            </tr>
+            <tr>
+                <td>所在地区</td>
+                <td>
+                    <input type="text" value="杭州" />
+                </td>
+            </tr>
+            <tr>
+                <td>婚姻状况</td>
+                <td>
+                    <input type="radio" name="marry" id="noMarry"><label for="noMarry">未婚</label>
+                    <input type="radio" name="marry" id="married"><label for="married">已婚</label>
+                    <input type="radio" name="marry" id="breakMarry"><label for="breakMarry">离婚</label>
+                </td>
+            </tr>
+            <tr>
+                <td>学历</td>
+                <td>
+                    <select>
+                        <option>博士</option>
+                        <option>硕士</option>
+                        <option>本科</option>
+                        <option selected="selected">大专</option>
+                        <option>中专</option>
+                        <option>高中</option>
+                        <option>初中</option>
+                        <option>小学</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>喜欢的类型</td>
+                <td>
+                    <input type="checkbox" name="liketype" id="cute" /><label for="cute">可爱的</label>
+                    <input type="checkbox" name="liketype" id="smart" /><label for="smart">聪明的</label>
+                    <input type="checkbox" name="liketype" id="young" /><label for="young">小鲜肉</label>
+                    <input type="checkbox" name="liketype" id="all" /><label for="all">都喜欢</label>
+                </td>
+            </tr>
+            <tr>
+                <td>自我介绍</td>
+                <td><textarea>我是...
+                </textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="免费注册" />&nbsp;&nbsp;<input type="reset" value="重新填写" /><br />
+                    <input type="checkbox" checked="checked" id="zctk"><label for="zctk">我同意注册条款和会员加入标注</label><br />
+                    <a href="#">我是会员，立即登录</a>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+
+</html>

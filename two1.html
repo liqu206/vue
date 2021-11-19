@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <script src="./vue.js"></script>
+    <style>
+        *{
+            margin:  0;
+            padding: 0;
+        }
+        #app{
+            width:60vw;
+            height:50vh;
+            margin: 0 auto;
+            padding-top: 5vh;
+        }
+        .box{
+            width: 30vw;
+            height: 40vh;
+            margin: 0 auto;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            background: rgb(255, 168, 8);
+        }
+        .line{
+            width: 80%;
+            height: 30px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+        .longline{
+            width: 80%;
+            height: auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+        span{
+            display: inline-block;
+            width: 20%;
+        }
+        .text{
+            display: inline-block;
+            width: 80%;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            margin: 0 auto;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <Regiser></Regiser>
+    </div>
+</body>
+<script>
+    Vue.component('Regiser',{
+        data:function(){
+            return {
+                name:'',
+                phoneNumber:'',
+                gender:'',
+                subject:[],
+                introduction:''
+            }
+        },
+        template:`
+            <div class="box">
+                <div class="line">
+                    <span>姓名</span>
+                    <input type="text" class="text" v-model='name'>
+                </div>
+                
+                <div class="line">
+                    <span>年龄</span>
+                <input type="number" @input='limitLength' class="text" v-model='phoneNumber'>
+                </div>
+                <div class="line">
+                    <span>性别</span>
+                <form>
+                    <input type="radio" value="male" v-model='gender'>男</input>
+                    <input type="radio" value="female" v-model='gender'>女</input>
+                </form>
+                </div>
+                <div class="line">
+                    <span>爱好</span>
+                <form>
+                    <input type="checkbox" value="physical" v-model='subject'>足球</input>
+                    <input type="checkbox" value="chemical" v-model='subject'>乒乓球</input>
+                    <input type="checkbox" value="politcal" v-model='subject'>跑步</input>
+                    <input type="checkbox" value="history" v-model='subject'>旅游</input>
+                </form>
+                </div>
+                <div class="longline">
+                    <span>自我介绍</span>
+                    <textarea name="introduction"  cols="50" rows="5" v-model='introduction' ></textarea>
+                </div>
+                <button @click='print'>注册</button>
+            </div>
+            `,
+        methods:{
+            limitLength:function(){
+                if(this.phoneNumber>13){
+                    this.phoneNumber=this.phoneNumber.slice(0,11)
+                }
+            },
+            print:function(){
+                console.log(this.name)
+                console.log(this.phoneNumber)
+                console.log(this.gender)
+                console.log(this.subject)
+                console.log(this.introduction)
+            }
+        },
+        
+    })
+    const vm=new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</html>
